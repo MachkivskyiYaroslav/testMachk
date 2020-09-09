@@ -1,0 +1,59 @@
+$minWidth: 320px;
+$maxWidth: 1920;
+$maxWidthContainer: 1170;
+$md1: $maxWidthContainer + 12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
+.container {
+  max-width: $maxWidthContainer + px;
+  margin: 0 auto;
+  @media (max-width: $md1+px) {
+    max-width: 970px;
+  }
+  @media (max-width: $md2+px) {
+    max-width: 750px;
+  }
+  @media (max-width: $md3+px) {
+    max-width: none;
+    padding: 0 10px;
+  }
+  .apartments{
+    display: flex;
+    flex-flow: row wrap;
+    .flat{
+      display: flex;
+      flex: 1 0 25%;
+      flex-direction: column;
+      margin: 2% 1%;
+      .mat-card-header{
+        height: 70px;
+      }
+      .image{
+        text-align: center;
+      }
+      &__info{
+        &__address{
+          display: flex;
+          align-items: flex-start;
+          span{
+            margin-right: 7px;
+          }
+        }
+        &__agent{
+          a{
+            color: #333;
+            text-decoration: none;
+          }
+        }
+
+      }
+      .mat-card-actions{
+        text-align: end;
+        .active{
+          color:red;
+        }
+      }
+    }
+  }
+}

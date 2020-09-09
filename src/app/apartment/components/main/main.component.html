@@ -1,0 +1,42 @@
+<p>main works!</p>
+
+<div class="container">
+
+
+  <div class="apartments">
+    <mat-card *ngFor="let item of apartmentModel| async"
+              class="mat-card mat-focus-indicator example-card flat">
+      <mat-card-header>
+        <mat-card-title>{{item.attributes.title}}</mat-card-title>
+        <mat-card-subtitle>Тип: {{item.type}}</mat-card-subtitle>
+      </mat-card-header>
+      <div mat-card-image class="image">
+        <img [src]="item.img" [alt]="item.img">
+      </div>
+      <mat-card-content>
+        <div [attr.id-flat]="item.id" #flat class="flat__info">
+          <div class="flat__info__address">
+            <p><span class="material-icons">location_searching</span></p>
+            <p><span> Address:</span> <strong>{{item.attributes.address.city}}, </strong>
+              st.{{item.attributes.address.street}}, № {{item.attributes.address.house}},
+              area: {{item.attributes.address.room}} </p>
+          </div>
+          <div class="flat__info__count">
+            <p> Square: {{item.attributes.area }} {{item.attributes.unit}} </p>
+            <p> Count of rooms: {{item.attributes.rooms}}</p>
+          </div>
+          <div class="flat__info__agent" [attr.id-agent]="item.relationships.id">
+            Agent: <a
+            routerLink="#">{{item.relationships.attributes.last_name + ' ' + item.relationships.attributes.first_name + ' ' + item.relationships.attributes.middle_name }}</a>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="span.classList.toggle('active'); click(flat)">  <span [ngClass]="getLike(flat) ? 'active' : '' "  #span [hidden]="true" class="material-icons">
+favorite
+</span></button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
